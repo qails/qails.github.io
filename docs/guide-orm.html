@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>对象关系映射 | Qails</title><meta name="viewport" content="width=device-width"><link rel="shortcut icon" href="/images/favicon.png"><link rel="stylesheet" href="/css/qails.css"><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.4/es6-shim.min.js"></script></head><body><div class="container"><div class="nav-main"><div class="wrap"><a class="nav-home" href="/"><img src="/images/qails-logo-white.png" alt="qails logo">Qails</a><div class="nav-site-wrapper"><ul class="nav-site nav-site-internal"><li><a href="/docs/basic-getting-started.html" class="active" data-target=".nav-docs">文档</a></li></ul><ul class="nav-site nav-site-external"><li><a href="https://github.com/qails" class="">GitHub</a></li><li><a href="https://packingjs.github.io" class="">Packing</a></li></ul></div></div></div><section class="content wrap documentationContent"><div class="nav-docs"><div class="nav-docs-viewport"><div class="nav-docs-section"><h3>基础知识</h3><ul><li><a style="margin-left:10px;" class="" href="/docs/basic-getting-started.html#content">概述</a></li><li><a style="margin-left:10px;" class="" href="/docs/basic-installation.html#content">安装</a></li><li><a style="margin-left:10px;" class="" href="/docs/basic-structure.html#content">目录结构</a></li><li><a style="margin-left:10px;" class="" href="/docs/basic-commands.html#content">命令</a></li><li><a style="margin-left:10px;" class="" href="/docs/basic-httpd.html#content">HTTP 服务器</a></li><li><a style="margin-left:10px;" class="" href="/docs/basic-middlewares.html#content">内置中间件</a></li><li><a style="margin-left:10px;" class="" href="/docs/basic-util.html#content">内置util方法</a></li></ul></div><div class="nav-docs-section"><h3>使用指南</h3><ul><li><a style="margin-left:10px;" class="" href="/docs/guide-configuration.html#content">profile 配置</a></li><li><a style="margin-left:10px;" class="" href="/docs/guide-router.html#content">路由</a></li><li><a style="margin-left:10px;" class="active" href="/docs/guide-orm.html#content">对象关系映射</a></li><li><a style="margin-left:10px;" class="" href="/docs/guide-rest.html#content">RESTful APIs</a></li><li><a style="margin-left:10px;" class="" href="/docs/guide-graphql.html#content">GraphQL APIs</a></li><li><a style="margin-left:10px;" class="" href="/docs/guide-test.html#content">单元测试</a></li><li><a style="margin-left:10px;" class="" href="/docs/guide-log.html#content">日志</a></li><li><a style="margin-left:10px;" class="" href="/docs/guide-es6.html#content">使用 ES6</a></li><li><a style="margin-left:10px;" class="" href="/docs/guide-jenkins.html#content">用 Jenkins 发布</a></li><li><a style="margin-left:10px;" class="" href="/docs/guide-changelog.html#content">Chanagelog</a></li></ul></div><div class="nav-docs-section"><h3>中间件</h3><ul><li><a style="margin-left:10px;" class="" href="/docs/middleware-accesslog.html#content">accessLogMiddleware</a></li><li><a style="margin-left:10px;" class="" href="/docs/middleware-bodyparser.html#content">bodyParserMiddleware</a></li><li><a style="margin-left:10px;" class="" href="/docs/middleware-cors.html#content">corsMiddleware</a></li><li><a style="margin-left:10px;" class="" href="/docs/middleware-envelope.html#content">envelopeMiddleware</a></li><li><a style="margin-left:10px;" class="" href="/docs/middleware-graphql.html#content">graphqlMiddleware</a></li><li><a style="margin-left:10px;" class="" href="/docs/middleware-prettyjson.html#content">prettyJsonMiddleware</a></li><li><a style="margin-left:10px;" class="" href="/docs/middleware-serve.html#content">serveMiddleware</a></li></ul></div><div class="nav-docs-section"><h3>util方法</h3><ul><li><a style="margin-left:10px;" class="" href="/docs/util-pug.html#content">pug</a></li><li><a style="margin-left:10px;" class="" href="/docs/util-session.html#content">session</a></li><li><a style="margin-left:10px;" class="" href="/docs/util-requireAllRouters.html#content">requireAllRouters</a></li><li><a style="margin-left:10px;" class="" href="/docs/util-watcher.html#content">watcher</a></li></ul></div><div class="nav-docs-section"><h3>示例代码</h3><ul><li><a style="margin-left:10px;" class="" href="/docs/example-helloworld.html#content">Hello World</a></li><li><a style="margin-left:10px;" class="" href="/docs/example-commonprofile.html#content">Common Profile</a></li><li><a style="margin-left:10px;" class="" href="/docs/example-buildinsmiddlewares.html#content">Buildins Middlewares</a></li><li><a style="margin-left:10px;" class="" href="/docs/example-mixedmiddlewares.html#content">Mixed Middlewares</a></li><li><a style="margin-left:10px;" class="" href="/docs/example-rest.html#content">RESTful APIs</a></li><li><a style="margin-left:10px;" class="" href="/docs/example-graphql.html#content">GraphQL APIs</a></li></ul></div></div></div><div class="inner-content"><a id="content"></a><h1>对象关系映射</h1><div><p>Qails 使用 <a href="https://www.npmjs.com/package/bookshelf" target="_blank">bookshelf</a> 实现的 ORM。</p><h2><a class="anchor" name=""></a>一个简单的模型 <a class="hash-link" href="#">#</a></h2><pre class="prism language-javascript">
+import <span class="token punctuation">{</span> Model <span class="token punctuation">}</span> from <span class="token string">&#x27;qails&#x27;</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+ * @class User
+ */</span>
+export default class <span class="token class-name">User</span> extends <span class="token class-name">Model</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/**
+   * @method 表名称
+   * @return {string}
+   */</span>
+  <span class="token keyword">get</span> <span class="token function">tableName<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&#x27;users&#x27;</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></pre><p>上面的代码创建了一个 <code>User</code> 模型，它和数据库中的 <code>users</code> 表关联。</p><h2><a class="anchor" name=""></a>命名约定 <a class="hash-link" href="#">#</a></h2><blockquote><p>以下是默认约定，如果不想按着默认约定编码，可以在代码中使用指定参数的方式更改</p></blockquote><ul><li>数据库、表应该像变量名一样，全部采用小写，但单词之间以下划线分隔，而且表名始终是复数形式的</li><li>文件名应该全部小写，单词之间用下划线</li><li>关联表名称默认为用下划线连接的被关联的两个表名，且按2个表名称的字母排序先后顺序连接<ul><li><code>users</code>和<code>posts</code>的关联表名称应该为<code>posts_users</code></li><li><code>tags</code>和<code>posts</code>的关联表名称应该为<code>posts_tags</code></li><li><code>users</code>和<code>tags</code>的关联表名称应该为<code>tags_users</code></li></ul></li><li>关联表名中关联的字段默认为 <code>被关联表名称的单数_id</code>，如 <code>user_id</code> <code>tag_id</code> <code>post_id</code></li></ul><h2><a class="anchor" name="bookshelf"></a>内置的 bookshelf 插件 <a class="hash-link" href="#bookshelf">#</a></h2><p>Qails 内置了以下 bookshelf 插件：</p><ul><li><strong>Pagination: 默认启用，不能禁用</strong></li><li><strong>bookshelf-modelbase: 默认启用，不能禁用</strong></li><li>Registry: 默认禁用</li><li>Virtuals: 默认禁用</li><li>Visibility: 默认禁用</li><li>bookshelf-cascade-delete: 默认禁用</li><li>bookshelf-json-columns: 默认禁用</li><li>bookshelf-mask: 默认禁用</li><li>bookshelf-paranoia: 默认禁用</li><li>bookshelf-uuid: 默认禁用</li></ul><p><a href="http://bookshelfjs.org/#plugins" target="_blank">查看插件详细说明</a></p><h3><a class="anchor" name=""></a>插件配置 <a class="hash-link" href="#">#</a></h3><p>可以通过传递环境变量来控制插件是否启动，在 qails 框架中，和 bookshelf 相关的环境变量统一放在 <code>profiles/common/bookshelf.env</code> 中（<a href="https://github.com/qails/qails-cli/blob/master/templates/init/profiles/common/bookshelf.env" target="_blank">查看文件</a>）</p><pre class="prism language-javascript">
+########################################
+#                                      #
+#               bookshelf配置           #
+#                                      #
+# 配置 bookshelf 模型具有的特性           #
+# 通过该配置决定使用哪些 bookshelf 插件    #
+#                                      #
+########################################
+
+######## 插件开关 ########
+# 让 Model 具有自动注册到中央位置的功能
+MODEL_REGISTRY<span class="token operator">=</span><span class="token boolean">false</span>
+
+# 让 Model 具有返回虚拟字段的功能
+MODEL_VIRTUALS<span class="token operator">=</span><span class="token boolean">false</span>
+
+# 让 Model 调用 toJSON 方法时具有显示／隐藏某些字段的功能
+MODEL_VISIBILITY<span class="token operator">=</span><span class="token boolean">false</span>
+
+# 让 Model 具有删除关联数据功能
+MODEL_CASCADEDELETE<span class="token operator">=</span><span class="token boolean">false</span>
+
+# 让 Model 具有返回自定义字段的功能
+MODEL_MASK<span class="token operator">=</span><span class="token boolean">false</span>
+
+# 让 Model 具有自动生成UUID的功能
+MODEL_UUID<span class="token operator">=</span><span class="token boolean">false</span>
+
+# 让 Model 具有自动存储序列化对象的能力
+MODEL_JSONCOLUMNS<span class="token operator">=</span><span class="token boolean">false</span>
+
+# 让 Model 具有自动转换对象 key 拼写的能力
+MODEL_MAGICCASE<span class="token operator">=</span><span class="token boolean">false</span>
+
+# 让 Model 具有软删除记录的能力
+MODEL_SOFTDELETE<span class="token operator">=</span><span class="token boolean">false</span>
+
+######## 插件参数 ########
+# UUID 生成器类型，默认值v4
+MODEL_UUID_TYPE<span class="token operator">=</span></pre></div><div class="docs-prevnext"><a class="docs-next" href="guide-rest.html#content">Next →</a></div><p class="edit-page-block">如果你发现文档存在错误，请<a target="_blank" href="https://github.com/qails/qails/issues">在 GitHub 提个 issue</a> 告诉我们。</p></div></section><footer class="nav-footer"><a href="https://qails.github.io" target="_blank" class="fbOpenSource"><img src="/images/qails-logo-white.png" alt="qails" width="45" height="45"></a><section class="copyright">Copyright © 2017 Qails Team.</section></footer></div><div id="fb-root"></div><script src="/js/scripts.js"></script></body></html>
